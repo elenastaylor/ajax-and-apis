@@ -1,0 +1,49 @@
+
+/* {
+    box-sizing: border-box;
+}
+*/
+#headerText {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    font-family: MedievalSharp, cursive;
+}
+
+.bangers {
+    font-family: 'Bangers', cursive;
+}
+
+.nunito {
+    font-family: 'Nunito', sans-serif;
+}
+
+#buttonsArea {
+    margin-top: 60px;
+    padding: 10px;
+}
+
+.musicGenre {
+    margin: 10px;
+}
+
+.gif {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #060606;
+}
+
+#searchCriteria {
+    padding-bottom: 0;
+}
+
+.panel-footer {
+    background-color: lightskyblue;
+}
+
+.panel {
+    border-color: #060606;
+}
+.panel:hover {
+    background-color: midnightblue;
+}
