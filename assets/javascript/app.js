@@ -2,8 +2,9 @@
  * Created by elenastaylor on 3/16/17.
  */
 // ALL GIPHY IMAGES ARE A COURTESY OF GIPHY.COM
-// initial array of musicGenres
-var musicGenres = ["Rock", "Jazz", "Disco", "Reggae"];
+
+// initial array of myMusicGenres
+var myMusicGenres = ["Rock", "Jazz", "Disco", "Reggae"];
 // variable to set the limit of how many images will be pulled from api request
 var limit = 10;
 
@@ -56,26 +57,47 @@ function addGifs() {
         });
 }
 
-// empty buttons area and then create new buttons from musicGenres array and add back to buttons area
+// empty buttons area and then create new buttons from myMusicGenres array and add back to buttons area
 function createButtons() {
     $("#buttonsArea").empty();
-    for (var i = 0; i < musicGenres.length; i++) {
+    for (var i = 0; i < myMusicGenres.length; i++) {
         var newBtn = $("<button>");
         newBtn.addClass("btn btn-primary btn-lg musicGenre nunito");
-        newBtn.attr("data-name", musicGenres[i]);
-        newBtn.text(musicGenres[i]);
+        newBtn.attr("data-name", myMusicGenres[i]);
+        newBtn.text(myMusicGenres[i]);
         $("#buttonsArea").append(newBtn);
     }
 }
+// set restrictions to choose only music genres
+var musicPool = ["rock", "blues", "jazz", "pop", "disco", "indie", "alternative", "classical", "punk", "grunge",
+    "new wave", "ragtime", "lullabies", "country", "dance", "electronic", "opera", "r&b", "hip-hop", "latin",
+    "gospel"];
+function limitMusicGenre(musicGenre) {
+    var found = false;
+    for (var i = 0; i < musicPool.length; i++) {
+        if (musicGenre == musicPool[i]) {
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        alert("This music genre does not exist!");
+    }
+    return found;
+}
 
-// when user clicks submit button, add input to superheroes array
+
+// when user clicks submit button, add input to myMusicGenres array
 $("#submitBtn").on("click", function() {
     // check that input field is not blank
     if ($("#addMusicGenre").val().trim() !== "") {
         var newMusicGenre = $("#addMusicGenre").val().trim();
-        musicGenres.push(newMusicGenre);
-        createButtons();
-        $("#addMusicGenre").val("");
+
+        if (limitMusicGenre(newMusicGenre)) {
+            myMusicGenres.push(newMusicGenre);
+            createButtons();
+            $("#addMusicGenre").val("");
+        }
     }
     return false;
 });
